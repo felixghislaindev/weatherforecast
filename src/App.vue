@@ -4,10 +4,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 
 export default defineComponent({
   name: "App",
-  components: {
+  components: {},
+  methods: {
+    ...mapActions([
+      "fetchWeatherData", // map `this.increment()` to `this.$store.dispatch('increment')`
+    ]),
+    handleFetchWeather() {
+      return this.fetchWeatherData();
+    },
+  },
+  mounted() {
+    console.log(this.handleFetchWeather());
   },
 });
 </script>
